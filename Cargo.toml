@@ -1,0 +1,18 @@
+[package]
+name = "fromage_converter"
+version = "0.1.0"
+authors = ["Benoît CORTIER <benoit.cortier@fried-world.eu>"]
+edition = "2018"
+license = "MIT"
+homepage = "https://github.com/CBenoit/fromage-converter"
+description = "Converts translation files"
+
+[dependencies]
+log = "0.4"
+env_logger = "0.7"
+structopt = "0.3"
+
+[profile.release]
+lto = true
+codegen-units = 1
+
