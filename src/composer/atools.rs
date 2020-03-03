@@ -21,20 +21,20 @@ impl FromageCook for AToolsComposer {
             };
 
             match fromage.kind {
-                FromageKind::Empty => writeln!(o)?,
-                FromageKind::Comment(text) => writeln!(o, "; {}", text)?,
+                FromageKind::Empty => write!(o, "\r\n")?,
+                FromageKind::Comment(text) => write!(o, "; {}\r\n", text)?,
                 FromageKind::Str { id, val } => {
                     if fromage.ignored {
-                        writeln!(o, r#";s[{}] = "{}""#, id, val)?
+                        write!(o, ";s[{}] = \"{}\"\r\n", id, val)?
                     } else {
-                        writeln!(o, r#"s[{}] = "{}""#, id, val)?
+                        write!(o, "s[{}] = \"{}\"\r\n", id, val)?
                     }
                 }
                 FromageKind::Msg { id, val } => {
                     if fromage.ignored {
-                        writeln!(o, r#";m[{}] = "{}""#, id, val)?
+                        write!(o, ";m[{}] = \"{}\"\r\n", id, val)?
                     } else {
-                        writeln!(o, r#"m[{}] = "{}""#, id, val)?
+                        write!(o, "m[{}] = \"{}\"\r\n", id, val)?
                     }
                 }
             }
