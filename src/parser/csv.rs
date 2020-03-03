@@ -181,8 +181,6 @@ fn parse_line(
         }
     } {}
 
-    let translation_empty = val.is_empty();
-
     match kind.as_str() {
         "com" => Ok(Fromage::comment(val)),
         "(str)" => {
@@ -193,19 +191,11 @@ fn parse_line(
         }
         "str" => {
             let id = id.parse::<u64>().map_err(|_| line)?;
-            let mut fromage = Fromage::str(id, val);
-            if translation_empty {
-                fromage.ignored = true;
-            }
-            Ok(fromage)
+            Ok(Fromage::str(id, val))
         }
         "msg" => {
             let id = id.parse::<u64>().map_err(|_| line)?;
-            let mut fromage = Fromage::msg(id, val);
-            if translation_empty {
-                fromage.ignored = true;
-            }
-            Ok(fromage)
+            Ok(Fromage::msg(id, val))
         }
         unknown => {
             log::debug!("unknown CSV kind: {}", unknown);
