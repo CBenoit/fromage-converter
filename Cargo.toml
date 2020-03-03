@@ -1,6 +1,6 @@
 [package]
 name = "fromage_converter"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Benoît CORTIER <benoit.cortier@fried-world.eu>"]
 edition = "2018"
 license = "MIT"
